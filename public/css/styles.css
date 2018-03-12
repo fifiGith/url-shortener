@@ -1,0 +1,34 @@
+body {
+	background-color: #b3c5c9;
+	font-family: 'Concert One';
+}
+
+.header {
+	margin: 30px 0px 30px 0px;
+}
+
+#title {
+	color: #f96f18;
+	font-family: 'Concert One';
+}
+
+.body {
+	width: 100%;
+}
+
+.input-field {
+	display: block;
+	margin: 0 auto;
+}
+
+#url-input {
+	padding-right: 0;
+}
+
+#shorten-btn {
+	padding-left: 0;
+}
+
+#title {
+	text-align: center;
+}
