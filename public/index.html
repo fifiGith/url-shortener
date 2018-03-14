@@ -3,7 +3,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/foundation.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<title>URL shortener</title>
 </head>
 <body>
@@ -13,11 +13,11 @@
 
 
 	<div class="body grid-container">
-		<form>
+		<form action="/add" method="post">
 			<div class="grid-x grid-padding-x">
 				<div class="large-3 cell"></div>
-				<div id="url-input" class="large-5 cell"><input type="text" name="url" placeholder="Enter your URL"></div>
-				<div id="shorten-btn" class="large-3 cell"><input class="button" type="button" value="Shorten"></div>
+				<div id="url-input" class="large-5 cell"><input type="text" name="url" placeholder="www.example.com"></div>
+				<div id="shorten-btn" class="large-3 cell"><input class="button" type="submit" value="Shorten"></div>
 			</div>
 		</form>
 	</div>

@@ -1,8 +1,11 @@
 var mongoose = require('mongoose');
-var dburl = 'mongodb://localhost:27017/urlshortener';
-var retry = null;
+var dburl = 'mongodb://localhost/urlshortener';
 
-mongoose.connect(dburl);
+var db = mongoose.connect(dburl);
+
+mongoose.connection.on('connecting', function() {
+	console.log('Connecting database...');
+});
 
 mongoose.connection.on('connected', function() {
   console.log('Mongoose connected to ' + dburl);
@@ -13,3 +16,5 @@ mongoose.connection.on('error', function(err) {
 mongoose.connection.on('disconnected', function() {
   console.log('Mongoose disconnected');
 });
+
+require('./urlModel.js');

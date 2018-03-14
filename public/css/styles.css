@@ -1,6 +1,14 @@
 body {
-	background-color: #b3c5c9;
-	font-family: 'Concert One';
+	background-color: #4F4056;
+	font-family: 'Varela Round', sans-serif;
+}
+
+.button {
+	background-color: #FAA275;
+	border-radius: 0.5px;
+}
+.button:hover {
+	background-color: #FFB996;
 }
 
 .header {
@@ -8,8 +16,8 @@ body {
 }
 
 #title {
-	color: #f96f18;
-	font-family: 'Concert One';
+	color: #EE4266;
+	font-family: 'Varela Round', sans-serif;
 }
 
 .body {
