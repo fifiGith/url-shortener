@@ -11,7 +11,7 @@ var urlSchema = new mongoose.Schema({
 });
 
 var counterSchema = new mongoose.Schema({
-	url_count: "url_count",
+	url_count: String,
 	count: Number
 });
 
