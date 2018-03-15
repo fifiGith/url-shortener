@@ -1,9 +1,18 @@
 var mongoose = require('mongoose');
 var Url = mongoose.model('Url');
+var Counter = mongoose.model('Counter');
+var hash = require('./hash.js');
+
+Counter.findOne({ url_count: "url_count"}, function(err, doc) {
+	if (!doc) {
+		Counter.create({
+			url_count: "url_count",
+			count: 20000
+		});
+	} 
+});
 
 module.exports.add = function(req, res) {
-
-	var url = req.body.url;
 
 	Url.findOne({ url: req.body.url }, function(err, url) {
 		if (url) {
@@ -17,8 +26,7 @@ module.exports.add = function(req, res) {
 	var createUrl = function() {
 		if (Url.url != req.body.url) {
 			Url.create({
-				url: String(req.body.url),
-				surl: ''
+				url: String(req.body.url)
 			}, function(err, url) {
 				if (err) {
 					console.log("Error adding URL");
