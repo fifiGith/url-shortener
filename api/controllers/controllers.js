@@ -18,7 +18,7 @@ module.exports.add = function(req, res) {
 		if (url) {
 			res.send("SAME");
 		} else {
-			console.log("POST URL", url);
+			console.log("POST URL");
 			createUrl();
 		}
 	});

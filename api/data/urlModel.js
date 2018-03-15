@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var hash = require('../controllers/hash.js');
 
 var urlSchema = new mongoose.Schema({
 	url: {
@@ -19,19 +20,16 @@ var counterSchema = new mongoose.Schema({
 });
 
 urlSchema.pre('save', function(next) {
-	console.log("urlSchema.pre()");
-
+	var Url = this;
 	var Counter = mongoose.model('Counter');
 	Counter.findOneAndUpdate({url_count: "url_count"}, {$inc: {count: 1}}, function(err, counter) {
-		console.log("urlSchema.pre()");
 		if (err) {
 			return next(err);
 		}
-		console.log("urlSchema.pre()");
-		this.num = counter.count;
+		Url.count = counter.count;
+		Url.surl = hash.encode(Url.count);
+		next();
 	});
-
-	next();
 });
 
 mongoose.model('Url', urlSchema);
