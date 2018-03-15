@@ -7,4 +7,8 @@ router
 	.route('/add')
 	.post(urlCtrl.add);
 
+router
+	.route('/:surl')
+	.get(urlCtrl.get);
+
 module.exports = router;

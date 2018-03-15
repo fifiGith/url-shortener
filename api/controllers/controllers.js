@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Url = mongoose.model('Url');
 var Counter = mongoose.model('Counter');
 var hash = require('./hash.js');
+var host = 'http://localhost:3000/';
 
 Counter.findOne({ url_count: "url_count"}, function(err, doc) {
 	if (!doc) {
@@ -16,7 +17,7 @@ module.exports.add = function(req, res) {
 
 	Url.findOne({ url: req.body.url }, function(err, url) {
 		if (url) {
-			res.send("SAME");
+			res.send(host + url.surl);
 		} else {
 			console.log("POST URL");
 			createUrl();
@@ -37,7 +38,7 @@ module.exports.add = function(req, res) {
 					console.log("URL added", url);
 					res
 						.status(201)
-						.json(url);   
+						.send(host + url.surl);
 				}
 			});
 		} else {
@@ -48,6 +49,12 @@ module.exports.add = function(req, res) {
 
 module.exports.get = function(req, res) {
 
-	console.log("GET query", req.query.url);
-	res.send(req.query.url);
+	Url.findOne({ surl: req.params.surl }, function(err, doc) {
+		console.log(req.params.surl);
+		if (doc) {
+			res.redirect(doc.url);
+		} else {
+			res.redirect('');
+		}
+	});
 };
