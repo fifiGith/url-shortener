@@ -6,7 +6,7 @@ var urlSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	count: {
+	count_id: {
 		type: Number
 	},
 	surl: {
@@ -17,6 +17,17 @@ var urlSchema = new mongoose.Schema({
 var counterSchema = new mongoose.Schema({
 	url_count: String,
 	count: Number
+});
+
+var userSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		required: true
+	},
+	password: {
+		type: String,
+		required: true
+	}
 });
 
 urlSchema.pre('save', function(next) {
@@ -34,3 +45,4 @@ urlSchema.pre('save', function(next) {
 
 mongoose.model('Url', urlSchema);
 mongoose.model('Counter', counterSchema);
+mongoose.model('User', userSchema);

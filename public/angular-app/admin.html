@@ -1,0 +1,7 @@
+<h1>{{ vm.title }}</h1>
+<ul>
+	<li ng-repeat="url in vm.url">
+		{{ url.count }} | {{ url.surl }} | {{ url.url }}
+		<a class="remove-btn" ng-click="remove(url._id)"> X </a>
+	</li>
+</ul>

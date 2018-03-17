@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Url = mongoose.model('Url');
 var Counter = mongoose.model('Counter');
 var hash = require('./hash.js');
+var path = require('path');
 var host = 'http://localhost:3000/';
 
 Counter.findOne({ url_count: "url_count"}, function(err, doc) {
@@ -55,6 +56,41 @@ module.exports.get = function(req, res) {
 			res.redirect(doc.url);
 		} else {
 			res.redirect('');
+		}
+	});
+};
+
+module.exports.getAdmin = function(req, res) {
+
+	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
+
+};
+
+module.exports.getUrlList = function(req, res) {
+	Url
+    .find()
+    .exec(function(err, url) {
+      if (err) {
+        console.log("Error finding url");
+        res
+          .status(500)
+          .json(err);
+      } else {
+        console.log("Found " + url.length + " urls" );
+        res
+          .json(url);
+      }
+    });
+};
+
+module.exports.removeUrl = function(req, res) {
+
+	var id = req.params.id;
+	console.log("id", id);
+
+	Url.findByIdAndRemove(id, function(err, doc) {
+		if(doc) {
+			console.log("delete", doc);
 		}
 	});
 };
