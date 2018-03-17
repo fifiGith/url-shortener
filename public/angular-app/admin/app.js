@@ -5,24 +5,22 @@ angular.module('admin', ['ngRoute'])
 function config($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'angular-app/admin.html',
+			templateUrl: 'angular-app/admin/admin.html',
 			controller: adminController,
 			controllerAs: 'vm'
 		});
 }
 
-function adminController($http, $scope) {
+function adminController($http, $route) {
 	var vm = this;
 	vm.title = "Admin's panel";
 	$http.get('/admin/urllist').then(function(response) {
 		vm.url = response.data;
 	});
 
-	$scope.remove = function(id) { 
+	vm.remove = function(id) { 
 		$http.delete('/admin/urllist/remove/' + id);
-  		console.log("delete");
-  		$http.get('/admin/urllist').then(function(response) {
-			vm.url = response.data;
-		});
+  		console.log("delete", id);
+  		$route.reload();
 	}
 }

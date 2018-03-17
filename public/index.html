@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="url">
 <head>
 	<link rel="stylesheet" type="text/css" href="css/foundation.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -11,18 +11,23 @@
 		<h1 id="title">URL shortener</h1>
 	</div>
 
-
 	<div class="body grid-container">
-		<form action="/add" method="post">
-			<div class="grid-x grid-padding-x">
-				<div class="large-3 cell"></div>
-				<div id="url-input" class="large-5 cell"><input type="text" name="url" placeholder="www.example.com"></div>
-				<div id="shorten-btn" class="large-3 cell"><input class="button" type="submit" value="Shorten"></div>
-			</div>
-		</form>
+
+	<div ng-view></div>
+
+		<div class=url-container>
+			<ul>
+				<li>google.com</li>
+				<li>youtube.com</li>
+				<li>facebook.com</li>
+			</ul>
+		</div>
 	</div>
 
-
 	<div class="footer"></div>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-route/angular-route.js"></script>
+	<script src="angular-app/url/app.js"></script>
 </body>
 </html>

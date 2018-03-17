@@ -3,6 +3,10 @@ body {
 	font-family: 'Varela Round', sans-serif;
 }
 
+li {
+	display: block;
+}
+
 .button {
 	background-color: #FAA275;
 	border-radius: 0.5px;
@@ -38,5 +42,9 @@ body {
 }
 
 #title {
+	text-align: center;
+}
+
+.url-container {
 	text-align: center;
 }

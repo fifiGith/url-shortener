@@ -20,7 +20,7 @@ module.exports.add = function(req, res) {
 		if (url) {
 			res.send(host + url.surl);
 		} else {
-			console.log("POST URL");
+			console.log("POST URL", req.body.url);
 			createUrl();
 		}
 	});

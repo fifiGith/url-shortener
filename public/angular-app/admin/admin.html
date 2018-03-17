@@ -2,6 +2,6 @@
 <ul>
 	<li ng-repeat="url in vm.url">
 		{{ url.count }} | {{ url.surl }} | {{ url.url }}
-		<a class="remove-btn" ng-click="remove(url._id)"> X </a>
+		<a class="remove-btn" ng-click="vm.remove(url._id)"> X </a>
 	</li>
 </ul>
