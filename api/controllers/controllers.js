@@ -48,7 +48,7 @@ module.exports.add = function(req, res) {
 	}
 }
 
-module.exports.get = function(req, res) {
+module.exports.redirect = function(req, res) {
 
 	Url.findOne({ surl: req.params.surl }, function(err, doc) {
 		console.log(req.params.surl);

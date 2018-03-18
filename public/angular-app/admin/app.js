@@ -11,8 +11,9 @@ function config($routeProvider) {
 		});
 }
 
-function adminController($http, $route) {
+function adminController($http, $route, $location) {
 	var vm = this;
+	vm.host = $location.protocol() + "://" + $location.host() + ':' + $location.port() + '/';
 	vm.title = "Admin's panel";
 	$http.get('/admin/urllist').then(function(response) {
 		vm.url = response.data;

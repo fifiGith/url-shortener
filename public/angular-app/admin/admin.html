@@ -1,7 +1,32 @@
-<h1>{{ vm.title }}</h1>
-<ul>
+
+<!-- <ul>
 	<li ng-repeat="url in vm.url">
 		{{ url.count }} | {{ url.surl }} | {{ url.url }}
 		<a class="remove-btn" ng-click="vm.remove(url._id)"> X </a>
 	</li>
 </ul>
+ -->
+<div class="grid-x">
+	<div class="cell small-2"></div>
+	<div class="surl cell small-8">
+		<div class="table-head grid-x">
+			<div class="cell small-1">count</div>
+			<div class="cell small-1">view</div>
+			<div class="cell small-5">url</div>
+			<div class="cell small-1">surl</div>
+			<div class="cell small-3">Short URL</div>
+			<div class="cell small-1">Delete</div>
+		</div>
+		<div class="table-data grid-x" ng-repeat="a in vm.url"><!-- 
+			<div class="cell small-6"><p>{{ a.url }}</p></div>
+			<div class="cell small-6"><p>{{ vm.host + a.surl }}</p></div> -->
+			<div class="cell small-1"><p>{{ a.count }}</p></div>
+			<div class="cell small-1">100</div>
+			<div class="cell small-5"><a href="{{ a.url }}">{{ a.url }}</p></a></div>
+			<div class="cell small-1"><p>{{ a.surl }}</p></div>
+			<div class="cell small-3"><a href="{{ vm.host + a.surl }}"><p>{{ vm.host + a.surl }}</p></a></div>
+			<div class="cell small-1"><a ng-click="vm.remove(a._id)">x</a></div>
+		</div>
+	</div>
+	<div class="cell small-2"></div>
+</div>

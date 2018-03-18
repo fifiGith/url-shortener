@@ -21,7 +21,7 @@ router
 
 router
 	.route('/:surl')
-	.get(ctrl.get);
+	.get(ctrl.redirect);
 
 
 module.exports = router;
