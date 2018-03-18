@@ -96,6 +96,8 @@ module.exports.removeUrl = function(req, res) {
 	Url.findByIdAndRemove(id, function(err, doc) {
 		if(doc) {
 			console.log("delete", doc);
+		} else {
+			return;
 		}
 	});
 };

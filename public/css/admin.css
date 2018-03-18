@@ -1,6 +1,12 @@
 body {
 	font-family: 'Varela Round', sans-serif;
 	text-align: center;
+	background-color: #f1f1f1;
+}
+
+.title {
+	color: #EE4266;
+	margin-top: 1.5rem;
 }
 
 .surl {

@@ -14,8 +14,14 @@ function config($routeProvider) {
 function urlController($http, $route, $location) {
 	var vm = this;
 	vm.host = $location.protocol() + "://" + $location.host() + ':' + $location.port() + '/';
+	vm.show = false;
 
-	vm.post = function() {
+	$http.get('/admin/urllist').then(function(response) {
+					vm.url = response.data;
+					console.log($route);
+	});
+
+	vm.post = function(res) {
 		$http({
     		method: 'POST',
     		url: 'add',
@@ -23,11 +29,11 @@ function urlController($http, $route, $location) {
     		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).then(function(response) {
 			if (response.status === 201) {
-				$route.reload();
 				$http.get('/admin/urllist').then(function(response) {
-		vm.url = response.data;
-		$route.reload();
-	});
+					vm.url = response.data;
+					vm.show = true;
+					console.log(vm.url[0].count);
+				});
 			}
 		}).catch(function(error) {
 			console.log(error);
