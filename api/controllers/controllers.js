@@ -54,6 +54,11 @@ module.exports.redirect = function(req, res) {
 		console.log(req.params.surl);
 		if (doc) {
 			res.redirect(doc.url);
+			doc.update({$inc: {view: 1}}, function(err, rdoc) {
+				if (err) {
+					console.log("Error update");
+				}
+			});
 		} else {
 			res.redirect('');
 		}

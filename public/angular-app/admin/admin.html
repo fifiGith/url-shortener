@@ -21,10 +21,10 @@
 			<div class="cell small-6"><p>{{ a.url }}</p></div>
 			<div class="cell small-6"><p>{{ vm.host + a.surl }}</p></div> -->
 			<div class="cell small-1"><p>{{ a.count }}</p></div>
-			<div class="cell small-1">100</div>
-			<div class="cell small-5"><a href="{{ a.url }}">{{ a.url }}</p></a></div>
+			<div class="cell small-1"><p>{{ a.view }}</p></div>
+			<div class="cell small-5"><a href="{{ a.url }}">{{ a.url }}</a></div>
 			<div class="cell small-1"><p>{{ a.surl }}</p></div>
-			<div class="cell small-3"><a href="{{ vm.host + a.surl }}"><p>{{ vm.host + a.surl }}</p></a></div>
+			<div class="cell small-3"><a href="{{ vm.host + a.surl }}">{{ vm.host + a.surl }}</a></div>
 			<div class="cell small-1"><a ng-click="vm.remove(a._id)">x</a></div>
 		</div>
 	</div>

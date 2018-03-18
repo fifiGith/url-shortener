@@ -2,12 +2,16 @@ var mongoose = require('mongoose');
 var hash = require('../controllers/hash.js');
 
 var urlSchema = new mongoose.Schema({
+	count: {
+		type: Number
+	},
+	view: {
+		type: Number,
+		default: 0
+	},
 	url: {
 		type: String,
 		required: true
-	},
-	count_id: {
-		type: Number
 	},
 	surl: {
 		type: String
