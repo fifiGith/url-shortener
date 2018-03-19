@@ -62,3 +62,21 @@ module.exports.login = function(req, res) {
 		}
 	});
 };
+
+module.exports.authenticate = function(req, res, next) {
+	var headerExists = req.headers.authorization;
+	if (headerExists) {
+		var token = req.headers.authorization.split(' ')[1];
+		jwt.verify(token, 'nimda', function(err, decoded) {
+			if (err) {
+				console.log(error);
+				res.status(401).json('Unauthorized');
+			} else {
+				req.user = decoded.username;
+				next();
+			}
+		});
+	} else {
+		res.redirect('admin/login');
+	}
+};

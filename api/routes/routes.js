@@ -10,7 +10,7 @@ router
 
 router
 	.route('/admin')
-	.get(adminCtrl.getAdmin);
+	.get(adminCtrl.authenticate, adminCtrl.getAdmin);
 
 router
 	.route('/admin/login')

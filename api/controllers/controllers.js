@@ -60,7 +60,7 @@ module.exports.redirect = function(req, res) {
 				}
 			});
 		} else {
-			res.redirect('');
+			res.redirect('/');
 		}
 	});
 };
