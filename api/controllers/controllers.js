@@ -65,12 +65,6 @@ module.exports.redirect = function(req, res) {
 	});
 };
 
-module.exports.getAdmin = function(req, res) {
-
-	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
-
-};
-
 module.exports.getUrlList = function(req, res) {
 	Url
     .find()

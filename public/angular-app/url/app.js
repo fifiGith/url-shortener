@@ -16,7 +16,7 @@ function urlController($http, $route, $location) {
 	vm.host = $location.protocol() + "://" + $location.host() + ':' + $location.port() + '/';
 	vm.show = false;
 
-	$http.get('/admin/urllist').then(function(response) {
+	$http.get('/urllist').then(function(response) {
 					vm.url = response.data;
 					console.log($route);
 	});
@@ -29,10 +29,9 @@ function urlController($http, $route, $location) {
     		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).then(function(response) {
 			if (response.status === 201) {
-				$http.get('/admin/urllist').then(function(response) {
+				$http.get('/urllist').then(function(response) {
 					vm.url = response.data;
 					vm.show = true;
-					console.log(vm.url[0].count);
 				});
 			}
 		}).catch(function(error) {

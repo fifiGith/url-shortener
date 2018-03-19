@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var ctrl = require('../controllers/controllers.js');
+var adminCtrl = require('../controllers/adminController.js');
 
 router
 	.route('/add')
@@ -9,19 +10,23 @@ router
 
 router
 	.route('/admin')
-	.get(ctrl.getAdmin);
+	.get(adminCtrl.getAdmin);
 
 router
-	.route('/admin/urllist')
+	.route('/admin/login')
+	.get(adminCtrl.getLogin)
+	.post(adminCtrl.login);
+
+router
+	.route('/urllist')
 	.get(ctrl.getUrlList);
 
 router
-	.route('/admin/urllist/remove/:id')
+	.route('/urllist/remove/:id')
 	.delete(ctrl.removeUrl);
 
 router
 	.route('/:surl')
 	.get(ctrl.redirect);
-
 
 module.exports = router;

@@ -18,3 +18,4 @@ mongoose.connection.on('disconnected', function() {
 });
 
 require('./urlModel.js');
+require('./adminModel.js');
