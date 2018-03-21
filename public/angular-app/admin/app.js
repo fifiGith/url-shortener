@@ -5,7 +5,7 @@ angular.module('admin', ['ngRoute'])
 function config($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'angular-app/admin/admin.html',
+			templateUrl: '/angular-app/admin/admin.html',
 			controller: adminController,
 			controllerAs: 'vm'
 		});

@@ -55,7 +55,7 @@ module.exports.login = function(req, res) {
 			if (bcrypt.compareSync(password, admin.password)) {
 				console.log('Admin logged in');
 				var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 3600 });
-				res.status(200).json({ success: true, token: token });
+				res.json(token);
 			} else {
 				res.status(401).json('Unauthorized');
 			}
@@ -69,7 +69,7 @@ module.exports.authenticate = function(req, res, next) {
 		var token = req.headers.authorization.split(' ')[1];
 		jwt.verify(token, 'nimda', function(err, decoded) {
 			if (err) {
-				console.log(error);
+				console.log(err);
 				res.status(401).json('Unauthorized');
 			} else {
 				req.user = decoded.username;
