@@ -55,7 +55,7 @@ module.exports.login = function(req, res) {
 			if (bcrypt.compareSync(password, admin.password)) {
 				console.log('Admin logged in');
 				var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 3600 });
-				res.json(token);
+				res.json({ token: token });
 			} else {
 				res.status(401).json('Unauthorized');
 			}
@@ -65,6 +65,7 @@ module.exports.login = function(req, res) {
 
 module.exports.authenticate = function(req, res, next) {
 	var headerExists = req.headers.authorization;
+	console.log(req.headers.authorization);
 	if (headerExists) {
 		var token = req.headers.authorization.split(' ')[1];
 		jwt.verify(token, 'nimda', function(err, decoded) {
@@ -77,6 +78,6 @@ module.exports.authenticate = function(req, res, next) {
 			}
 		});
 	} else {
-		res.redirect('admin/login');
+		res.redirect('/admin/login');
 	}
 };

@@ -4,6 +4,10 @@ body {
 	background-color: #f1f1f1;
 }
 
+h1 {
+	font-family: 'Varela Round', sans-serif;
+}
+
 .title {
 	color: #EE4266;
 	margin-top: 1.5rem;
@@ -13,6 +17,7 @@ body {
 	background-color: white;
 	text-align: center;
 	margin-top: 1.2em;
+	margin-bottom: 2em;
 	box-shadow: 5px 5px 50px grey;
 	display: block;
   	box-sizing: border-box;

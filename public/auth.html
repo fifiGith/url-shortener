@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="auth">
 <head>
 	
+	<link rel="stylesheet" type="text/css" href="/css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="/css/auth.css">
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<title>Login</title>
 </head>
 <body>
-	<div class="from">
-		<form>
-			<h2>Login</h2>
-			<span><p>Username</p></span>
-			<input type="text" name="Username">
-			<span><p>Password</p></span>
-			<input type="text" name="Password">
-			<input type="button" name="Signin" value="Sign in">
-		</form>
-	</div>
+	<div class="container" ng-view></div>
+
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-route/angular-route.js"></script>
+	<script src="/angular-app/auth/app.js"></script>
 </body>
 </html>

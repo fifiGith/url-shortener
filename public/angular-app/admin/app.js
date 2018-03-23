@@ -1,8 +1,11 @@
 angular.module('admin', ['ngRoute'])
 .config(config)
-.controller('adminController', adminController);
+.controller('adminController', adminController)
+.factory('AuthInterceptor', AuthInterceptor);
 
-function config($routeProvider) {
+function config($routeProvider, $httpProvider) {
+	$httpProvider.interceptors.push('AuthInterceptor');
+
 	$routeProvider
 		.when('/', {
 			templateUrl: '/angular-app/admin/admin.html',
@@ -24,4 +27,19 @@ function adminController($http, $route, $location) {
   		console.log("delete", id);
   		$route.reload();
 	}
+}
+
+
+function AuthInterceptor($location, $window) {
+    return {
+        request: request
+    };
+    
+    function request(config) {
+        config.headers = config.headers || {};
+        if ($window.sessionStorage.token) {
+            config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+        }
+        return config;
+    }
 }
