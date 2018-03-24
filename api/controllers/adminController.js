@@ -34,38 +34,38 @@ var usernameAndPassword = function(admin) {
 }
 
 module.exports.getAdmin = function(req, res) {
-
 	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
 };
 
 module.exports.getLogin = function(req, res) {
-
 	res.sendFile(path.join(__dirname, '../../public', 'auth.html'));	
 };
 
 module.exports.login = function(req, res) {
 	console.log('logging in');
-	var username = req.body.username;
-	var password = req.body.password;
-
-	Admin.findOne({ username: username }, function(err, admin) {
-		if (err) {
-			console.log(err);
-		} else {
-			if (bcrypt.compareSync(password, admin.password)) {
-				console.log('Admin logged in');
-				var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 3600 });
-				res.json({ token: token });
+	if (req.body.username && req.body.password) {
+		var username = req.body.username;
+		var password = req.body.password;
+		Admin.findOne({ username: username }, function(err, admin) {
+			if (err) {
+				return err;
 			} else {
-				res.status(401).json('Unauthorized');
+				if (bcrypt.compare(password, admin.password)) {
+					console.log('Admin logged in');
+					var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 3600 });
+					res.json({ token: token });
+				} else {
+					res.status(401).json('Unauthorized');
+				}
 			}
-		}
-	});
+		});
+	}
+
 };
 
 module.exports.authenticate = function(req, res, next) {
 	var headerExists = req.headers.authorization;
-	console.log(req.headers.authorization);
+	
 	if (headerExists) {
 		var token = req.headers.authorization.split(' ')[1];
 		jwt.verify(token, 'nimda', function(err, decoded) {
@@ -78,6 +78,7 @@ module.exports.authenticate = function(req, res, next) {
 			}
 		});
 	} else {
+		console.log('sdfsfdsfsd');
 		res.redirect('/admin/login');
 	}
 };

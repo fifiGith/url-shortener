@@ -40,6 +40,7 @@ function AuthInterceptor($location, $window) {
         if ($window.sessionStorage.token) {
             config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
         }
+        console.log(config);
         return config;
     }
 }

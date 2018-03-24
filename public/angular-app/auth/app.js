@@ -24,11 +24,18 @@ function authController($http, $route, $location, $window) {
 			password: vm.password
 		};
 
-		$http.post('/admin/login', user).then(function(response) {
-			$window.sessionStorage.token = response.data.token;
-			var landingUrl = "http://" + $window.location.host + "/admin";
-			$window.location.href = landingUrl;
-		});
+		if (vm.username && vm.password) {
+			$http.post('/admin/login', user).then(function(response) {
+				$window.sessionStorage.token = response.data.token;
+				console.log(response);
+				var landingUrl = "http://" + $window.location.host + "/admin";
+				$window.location.href = landingUrl;
+			}).catch(function(error) {
+				if (error) {
+					console.log(error);
+				}
+			});
+		}
 	}
 }
 
@@ -40,7 +47,7 @@ function AuthInterceptor($location, $window) {
     function request(config) {
         config.headers = config.headers || {};
         if ($window.sessionStorage.token) {
-            config.headers.authorization = 'Bearer ' + $window.sessionStorage.token;
+            config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
         }
         console.log(config);
         return config;
