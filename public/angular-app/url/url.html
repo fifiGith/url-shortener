@@ -2,25 +2,35 @@
 	<h1 id="title">URL shortener</h1>
 </div>
 
-<form name="form" ng-submit="vm.post()">
-	<div class="grid-x grid-padding-x">
-		<div class="large-3 cell"></div>
-		<div id="url-input" class="large-5 cell"><input type="text" name="url" placeholder="www.example.com" ng-model="vm.data"></div>
-		<div id="shorten-btn" class="large-3 cell"><input class="button" type="submit" value="Shorten"></div>
-	</div>
-</form>
+<a href="/admin/login" class="float">
+	<i class="fas fa-sign-in-alt my-float"></i>
+</a>
+<div class="label-container">
+	<div class="label-text">Login</div>
+	<i class="fas fa-sign-in-alt label-arrow"></i>
+</div>
 
-<div class="grid-x" ng-show="vm.show === true;">
-	<div class="cell small-3"></div>
-	<div class="surl cell small-6">
-		<div class="table-head grid-x">
-			<div class="cell small-6">URL</div>
-			<div class="cell small-6">Short URL</div>
+<div class="url-container">
+	<form name="form" ng-submit="vm.post()">
+		<div class="grid-x">
+			<!-- <div class="small-3 cell"></div> -->
+			<div id="url-input" class="small-9 cell"><input type="text" name="url" placeholder="www.example.com" ng-model="vm.data"></div>
+			<button class="button small-3 cell" type="submit">Shorten</button>
 		</div>
-		<div class="table-data grid-x" ng-repeat="a in vm.url" ng-show="$last">
-			<div class="cell small-6"><p><a href="{{ a.url }}">{{ a.url }}</a></p></div>
-			<div class="cell small-6"><p><a href="{{ vm.host + a.surl }}">{{ vm.host + a.surl }}</a></p></div>
+	</form>
+	
+	<div class="grid-x surl" ng-show="vm.show === true;">
+	<!-- 	<div class="cell small-3"></div>
+		<div class="surl cell small-6"> -->
+			<div class="table-head grid-x">
+				<div class="cell small-6">URL</div>
+				<div class="cell small-6">Short URL</div>
+			</div>
+			<div class="table-data grid-x" ng-repeat="a in vm.url" ng-show="$last">
+				<div class="cell small-6"><p><a href="{{ a.url }}">{{ a.url }}</a></p></div>
+				<div class="cell small-6"><p><a href="{{ vm.host + a.surl }}">{{ vm.host + a.surl }}</a></p></div>
+			</div>
 		</div>
+		<!-- <div class="cell small-3"></div> -->
 	</div>
-	<div class="cell small-3"></div>
 </div>

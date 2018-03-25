@@ -3,17 +3,16 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/foundation.css">
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="css/auth.css">
-	<link rel="stylesheet" type="text/css" href="css/admin.css"> -->
+	<link rel="stylesheet" type="text/css" href="/css/float.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<title>URL shortener</title>
 </head>
 <body>
 	<base href="/">
 	<div class="body grid-container">
-
 		<div ng-view></div>
-
 	</div>
 
 	<div class="footer"></div>
@@ -22,9 +21,9 @@
 	<script src="/node_modules/angular-route/angular-route.js"></script>
 	<script src="/angular-app/app.js"></script>
 
+	<script src="/angular-app/auth/authInterceptor.js"></script>
 	<script src="/angular-app/admin/adminController.js"></script>
 	<script src="/angular-app/auth/authController.js"></script>
-	<script src="/angular-app/auth/authInterceptor.js"></script>
 	<script src="/angular-app/auth/authFactory.js"></script>
 	<script src="/angular-app/url/urlController.js"></script>
 	<script src="/angular-app/surl/surlController.js"></script>

@@ -4,7 +4,7 @@ function authController($http, $route, $location, $window, AuthFactory) {
 	var vm = this;
 	var landingUrl = "http://" + $window.location.host + "/admin";
 
-	if ($window.sessionStorage.token) {
+	if (AuthFactory.isLoggedIn) {
 		$window.location.href = landingUrl;
 	}
 
@@ -22,7 +22,8 @@ function authController($http, $route, $location, $window, AuthFactory) {
 				$window.location.href = landingUrl;
 			}).catch(function(error) {
 				if (error) {
-					console.log(error);
+					// console.log(error);
+					return;
 				}
 			});
 		}

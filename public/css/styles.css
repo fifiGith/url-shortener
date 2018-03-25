@@ -37,9 +37,17 @@ li {
 	padding-right: 0;
 }
 
-#shorten-btn {
+/*#shorten-btn {
 	padding-left: 0;
+	background-color: #FAA275;
+
 }
+
+#shorten-btn:hover {
+	background-color: #FFB996;
+
+	transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}*/
 
 #title {
 	text-align: center;
@@ -99,6 +107,13 @@ li {
 	color: #faa275;
 }
 
+.url-container {
+	display: block;
+	min-width: 300px;
+	max-width: 50%;
+	margin: auto;
+}
+
 .animate-show-hide.ng-hide {
   opacity: 0;
 }
@@ -110,4 +125,8 @@ li {
 
 p {
 	word-wrap:break-word;
+}
+
+a {
+	color: #FAA275;
 }

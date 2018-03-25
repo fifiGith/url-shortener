@@ -2,6 +2,14 @@
 	<h1 id="title">Admin panel</h1>
 </div>
 
+<a href="/" class="float">
+	<i class="fas fa-home my-float"></i>
+</a>
+<div class="label-container">
+	<div class="label-text">Home</div>
+	<i class="fas fa-home label-arrow"></i>
+</div>
+
 <div class="grid-x">
 	<div class="cell small-2"></div>
 	<div class="admin-table surl cell small-8">
@@ -13,7 +21,7 @@
 			<div class="cell small-3">Short URL</div>
 			<div class="cell small-1">Delete</div>
 		</div>
-		<div class="table-data grid-x" ng-repeat="a in vm.url">
+		<div class="table-data admin-table-data grid-x" ng-repeat="a in vm.url">
 			<div class="cell small-1"><p>{{ a.count }}</p></div>
 			<div class="cell small-1"><p>{{ a.view }}</p></div>
 			<div class="cell small-5"><a href="{{ a.url }}">{{ a.url }}</a></div>

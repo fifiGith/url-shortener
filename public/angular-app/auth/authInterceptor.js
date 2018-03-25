@@ -1,6 +1,6 @@
 angular.module('url').factory('AuthInterceptor', AuthInterceptor);
 
-function AuthInterceptor($location, $window) {
+function AuthInterceptor($location, $window, AuthFactory) {
     return {
         request: request,
         response: response

@@ -49,18 +49,19 @@ module.exports.login = function(req, res) {
 		Admin.findOne({ username: username }, function(err, admin) {
 			if (err) {
 				return err;
-			} else {
+			} else if (admin) {
 				if (bcrypt.compare(password, admin.password)) {
 					console.log('Admin logged in');
-					var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 3600 });
+					var token = jwt.sign({ username: admin.username }, 'nimda', { expiresIn: 1800 });
 					res.json({ token: token });
 				} else {
 					res.status(401).json('Unauthorized');
 				}
+			} else {
+				res.status(401).json('Unauthorized');
 			}
 		});
 	}
-
 };
 
 module.exports.authenticate = function(req, res, next) {
