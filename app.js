@@ -15,10 +15,15 @@ app.use(function(req, res, next) {
 app.use(express.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
-app.use('/', routes);
+app.use('/api', routes);
+
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.get('*', function (req, res) {
+    res.sendFile('index.html', { root: path.join(__dirname, '/public') });
+});
 
 var server = app.listen(app.get('port'), function() {
   var port = server.address().port;

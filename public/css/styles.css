@@ -49,6 +49,30 @@ li {
 	text-align: center;
 }
 
+.admin-header {
+	margin-top: 1.6rem;
+}
+
+.admin-table {
+	min-width: 800px;
+	margin-bottom: 45px;
+}
+
+.login-container {
+	font-family: 'Varela Round', sans-serif;
+	color: #EE4266;
+	background-color: white;
+	text-align: center;
+	width: 25%;
+	min-width: 400px;
+	height: auto;
+	display: block;
+	margin: 3rem auto auto auto;
+	padding: 0.7rem 1.3rem 1.3rem 1.3rem;
+	border: 1px white solid;
+	border-radius: 3px;
+}
+
 .surl {
 	background-color: white;
 	text-align: center;
