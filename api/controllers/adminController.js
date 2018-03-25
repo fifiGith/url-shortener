@@ -78,7 +78,6 @@ module.exports.authenticate = function(req, res, next) {
 			}
 		});
 	} else {
-		console.log('sdfsfdsfsd');
 		res.redirect('/admin/login');
 	}
 };
