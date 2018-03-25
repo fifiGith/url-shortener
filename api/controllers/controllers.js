@@ -53,14 +53,14 @@ module.exports.redirect = function(req, res) {
 	Url.findOne({ surl: req.params.surl }, function(err, doc) {
 		console.log(req.params.surl);
 		if (doc) {
-			res.redirect(doc.url);
+			res.json(doc.url);
 			doc.update({$inc: {view: 1}}, function(err, rdoc) {
 				if (err) {
 					console.log("Error update");
 				}
 			});
 		} else {
-			res.redirect('/');
+			res.json('/');
 		}
 	});
 };

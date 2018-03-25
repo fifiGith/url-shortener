@@ -20,7 +20,7 @@ function adminController($http, $route, $location) {
 
 	vm.remove = function(id) { 
 		$http.delete('/api/urllist/remove/' + id);
-  		console.log("delete", id);
+  		// console.log("delete", id);
   		$route.reload();
 	}
 }

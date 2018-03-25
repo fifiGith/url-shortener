@@ -33,13 +33,13 @@ var usernameAndPassword = function(admin) {
 	console.log("Admin's panel: /admin");
 }
 
-module.exports.getAdmin = function(req, res) {
-	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
-};
+// module.exports.getAdmin = function(req, res) {
+// 	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
+// };
 
-module.exports.getLogin = function(req, res) {
-	res.sendFile(path.join(__dirname, '../../public', 'auth.html'));	
-};
+// module.exports.getLogin = function(req, res) {
+// 	res.sendFile(path.join(__dirname, '../../public', 'auth.html'));	
+// };
 
 module.exports.login = function(req, res) {
 	console.log('logging in');
@@ -65,7 +65,6 @@ module.exports.login = function(req, res) {
 
 module.exports.authenticate = function(req, res, next) {
 	var headerExists = req.headers.authorization;
-	
 	if (headerExists) {
 		var token = req.headers.authorization.split(' ')[1];
 		jwt.verify(token, 'nimda', function(err, decoded) {

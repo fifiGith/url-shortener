@@ -21,12 +21,12 @@ function urlController($http, $route, $location) {
 	vm.post = function(res) {
 		$http({
     		method: 'POST',
-    		url: 'add',
+    		url: '/api/add',
     		data: "url=" + vm.data,
     		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 		}).then(function(response) {
 			if (response.status === 201) {
-				$http.get('/urllist').then(function(response) {
+				$http.get('/api/urllist').then(function(response) {
 					vm.url = response.data;
 					vm.show = true;
 				});

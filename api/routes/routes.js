@@ -8,13 +8,13 @@ router
 	.route('/add')
 	.post(ctrl.add);
 
-router
-	.route('/admin')
-	.get(adminCtrl.getAdmin);
+// router
+// 	.route('/admin')
+// 	.get(adminCtrl.authenticate, adminCtrl.getAdmin);
 
 router
 	.route('/admin/login')
-	.get(adminCtrl.getLogin)
+	// .get(adminCtrl.getLogin)
 	.post(adminCtrl.login);
 
 router
@@ -23,7 +23,7 @@ router
 
 router
 	.route('/urllist/remove/:id')
-	.delete(ctrl.removeUrl);
+	.delete(adminCtrl.authenticate, ctrl.removeUrl);
 
 router
 	.route('/:surl')

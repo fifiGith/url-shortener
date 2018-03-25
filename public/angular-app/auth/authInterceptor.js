@@ -2,7 +2,8 @@ angular.module('url').factory('AuthInterceptor', AuthInterceptor);
 
 function AuthInterceptor($location, $window) {
     return {
-        request: request
+        request: request,
+        response: response
     };
     
     function request(config) {
@@ -11,5 +12,15 @@ function AuthInterceptor($location, $window) {
             config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
         }
         return config;
+    }
+
+    function response(response) {
+        if (response.status === 200 && $window.sessionStorage.token && !AuthFactory.isLoggedIn) {
+            AuthFactory.isLoggedIn = true;
+        }
+        if (response.status === 401) {
+            AuthFactory.isLoggedIn = false;
+        }
+        return response || $q.when(response);
     }
 }
