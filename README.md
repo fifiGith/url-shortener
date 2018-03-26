@@ -5,9 +5,9 @@ Url shortener project
 
 ### To install:
 ```bash g
-git clone https://github.com/fifiGith/url-shortener.git
-cd url-shortener
-npm install
+$ git clone https://github.com/fifiGith/url-shortener.git
+$ cd url-shortener
+$ npm install
 ```
 
 ### Requirement
