@@ -33,14 +33,6 @@ var usernameAndPassword = function(admin) {
 	console.log("Admin's panel: /admin");
 }
 
-// module.exports.getAdmin = function(req, res) {
-// 	res.sendFile(path.join(__dirname, '../../public', 'admin.html'));
-// };
-
-// module.exports.getLogin = function(req, res) {
-// 	res.sendFile(path.join(__dirname, '../../public', 'auth.html'));	
-// };
-
 module.exports.login = function(req, res) {
 	console.log('logging in');
 	if (req.body.username && req.body.password) {

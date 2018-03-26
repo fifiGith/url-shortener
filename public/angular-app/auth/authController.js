@@ -2,7 +2,8 @@ angular.module('url').controller('authController', authController);
 
 function authController($http, $route, $location, $window, AuthFactory) {
 	var vm = this;
-	var landingUrl = "http://" + $window.location.host + "/admin";
+	var landingUrl = "http://" + $window.location.host;
+	vm.error = '';
 
 	if (AuthFactory.isLoggedIn) {
 		$window.location.href = landingUrl;
@@ -20,12 +21,14 @@ function authController($http, $route, $location, $window, AuthFactory) {
 				$window.sessionStorage.token = response.data.token;
 				console.log(response);
 				$window.location.href = landingUrl;
+				vm.error = '';
 			}).catch(function(error) {
 				if (error) {
-					// console.log(error);
-					return;
+					vm.error = '* Wrong username or password *';
 				}
 			});
+		} else {
+			vm.error = '* Please enter username and password *';
 		}
 	}
 }

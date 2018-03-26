@@ -10,6 +10,7 @@
 	<form ng-submit="vm.post()">
 		<h2 id="title">Login</h2>
 		<hr>
+		<div class="error" ng-show="vm.error"> {{ vm.error }} </div>
 		<span><p>Username</p></span>
 		<input type="text" name="username" placeholder="Username" ng-model="vm.username">
 		<span><p>Password</p></span>

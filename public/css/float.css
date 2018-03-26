@@ -1,3 +1,12 @@
+#second-float {
+	top: 100px;
+	right: 20px;
+}
+
+#second-label-container {
+	top: 108px;
+	right: 85px;
+}
 
 .label-container{
 	position:fixed;
@@ -47,7 +56,7 @@ a.float + div.label-container {
   transition: visibility 0s, opacity 0.5s ease;
 }
 
-a.float:hover + div.label-container{
+a.float:hover + div.label-container {
   visibility: visible;
   opacity: 1;
 }

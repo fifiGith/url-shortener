@@ -2,15 +2,35 @@
 	<h1 id="title">URL shortener</h1>
 </div>
 
-<a href="/admin/login" class="float">
-	<i class="fas fa-sign-in-alt my-float"></i>
-</a>
-<div class="label-container">
-	<div class="label-text">Login</div>
-	<i class="fas fa-sign-in-alt label-arrow"></i>
+<div ng-if="!vm.isLoggedIn">
+	<a href="/admin/login" class="float">
+		<i class="fas fa-sign-in-alt my-float"></i>
+	</a>
+	<div class="label-container">
+		<div class="label-text">Login</div>
+		<i class="fas fa-sign-in-alt label-arrow"></i>
+	</div>
+</div>
+
+<div ng-if="vm.isLoggedIn">
+	<a href="/admin" class="float">
+		<i class="fas fa-user my-float"></i>
+	</a>
+	<div class="label-container">
+		<div class="label-text">Admin</div>
+		<i class="fas fa-user label-arrow"></i>
+	</div>
+	<a ng-click="vm.logout()" id="second-float" class="float">
+		<i class="fas fa-sign-out-alt my-float"></i>
+	</a>
+	<div id="second-label-container" class="label-container">
+		<div class="label-text">Logout</div>
+		<i class="fas fa-sign-out-alt label-arrow"></i>
+	</div>
 </div>
 
 <div class="url-container">
+
 	<form name="form" ng-submit="vm.post()">
 		<div class="grid-x">
 			<!-- <div class="small-3 cell"></div> -->
@@ -18,15 +38,17 @@
 			<button class="button small-3 cell" type="submit">Shorten</button>
 		</div>
 	</form>
+
+	<div class="error" ng-show="vm.error!=''"> <p>{{ vm.error }}</p> </div>
 	
-	<div class="grid-x surl" ng-show="vm.show === true;">
+	<div class="grid-x surl" ng-show="vm.urlValid === true;">
 	<!-- 	<div class="cell small-3"></div>
 		<div class="surl cell small-6"> -->
 			<div class="table-head grid-x">
 				<div class="cell small-6">URL</div>
 				<div class="cell small-6">Short URL</div>
 			</div>
-			<div class="table-data grid-x" ng-repeat="a in vm.url" ng-show="$last">
+			<div class="table-data grid-x" ng-repeat="a in vm.url" ng-show="vm.compare(a.url, vm.tempUrl)">
 				<div class="cell small-6"><p><a href="{{ a.url }}">{{ a.url }}</a></p></div>
 				<div class="cell small-6"><p><a href="{{ vm.host + a.surl }}">{{ vm.host + a.surl }}</a></p></div>
 			</div>

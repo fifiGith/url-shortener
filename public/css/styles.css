@@ -22,6 +22,7 @@ li {
 #title {
 	color: #EE4266;
 	font-family: 'Varela Round', sans-serif;
+	margin-bottom: 0;
 }
 
 .body {
@@ -114,6 +115,11 @@ li {
 	margin: auto;
 }
 
+.error {
+	color: red;
+	margin-bottom: 0.7em;
+}
+
 .animate-show-hide.ng-hide {
   opacity: 0;
 }
@@ -124,7 +130,7 @@ li {
 }
 
 p {
-	word-wrap:break-word;
+	word-wrap: break-word;
 }
 
 a {

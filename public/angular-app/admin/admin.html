@@ -24,7 +24,7 @@
 		<div class="table-data admin-table-data grid-x" ng-repeat="a in vm.url">
 			<div class="cell small-1"><p>{{ a.count }}</p></div>
 			<div class="cell small-1"><p>{{ a.view }}</p></div>
-			<div class="cell small-5"><a href="{{ a.url }}">{{ a.url }}</a></div>
+			<div class="cell small-5"><p><a href="{{ a.url }}">{{ a.url }}</a></p></div>
 			<div class="cell small-1"><p>{{ a.surl }}</p></div>
 			<div class="cell small-3"><a href="{{ vm.host + a.surl }}">{{ vm.host + a.surl }}</a></div>
 			<div class="cell small-1"><a ng-click="vm.remove(a._id)">x</a></div>
