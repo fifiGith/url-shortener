@@ -4,8 +4,11 @@ Url shortener project
 ## Installation and requirement
 
 ### To install:
-`<addr>` git clone https://github.com/fifiGith/url-shortener.git
-`<addr>` npm install
+```bash g
+git clone https://github.com/fifiGith/url-shortener.git
+cd url-shortener
+npm install
+'''
 
 ### Requirement
 - Mongodb
