@@ -7,11 +7,15 @@ Url shortener web application project (Like bit.ly)
 - node.js
 - Mongodb **
 
-### To install:
+### To install
 ```bash
 $ git clone https://github.com/fifiGith/url-shortener.git
 $ cd url-shortener
 $ npm install
+```
+### To run
+```bash
+$ npm start
 ```
 
 ## Admin panel
@@ -35,6 +39,7 @@ You can change username and password later by going to:
 ```
 
 ## Tool used
-- node.js
-- angular.js
-- html, css
+- Node.js
+- Angular.js
+- HTML, CSS
+- Foudation
