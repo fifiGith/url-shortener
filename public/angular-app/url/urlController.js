@@ -18,13 +18,14 @@ function urlController($http, $route, $location, $window, AuthFactory) {
 		if (vm.isValid(vm.data)) {
 			vm.urlValid = true;
 			vm.show = true;
+			var newUrl = vm.modUrl(vm.data);
 			$http({
     			method: 'POST',
     			url: '/api/add',
-    			data: "url=" + vm.data,
+    			data: "url=" + newUrl,
     			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 			}).then(function(response) {
-				vm.tempUrl = vm.data;
+				vm.tempUrl = newUrl;
 				vm.data = '';
 				if (response.status === 201) {
 					$http.get('/api/urllist').then(function(response) {
@@ -50,6 +51,16 @@ function urlController($http, $route, $location, $window, AuthFactory) {
 		} else {
 			vm.error = '* Please enter valid URL *';
 			return false;
+		}
+	};
+
+	vm.modUrl = function(url) {
+		var u = url.toString();
+		if (u.substring(0, 3) == 'www') {
+			u = 'http://' + u;
+			return u;
+		} else {
+			return u;
 		}
 	};
 
