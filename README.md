@@ -8,7 +8,7 @@ Url shortener project
 git clone https://github.com/fifiGith/url-shortener.git
 cd url-shortener
 npm install
-'''
+```
 
 ### Requirement
 - Mongodb
